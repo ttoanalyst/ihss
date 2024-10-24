@@ -1,12 +1,12 @@
 import streamlit as st 
 import plotly.graph_objects as go, plotly.express as px
-# from prepare_data import prepare_data as pd 
+from prepare_data import prepare_data 
 import sys
 import os
 # Get the parent directory path
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-# Add the parent directory to sys.path
-sys.path.append(parent_dir)
+# parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+# # Add the parent directory to sys.path
+# sys.path.append(parent_dir)
 
 ## helper functions 
 # Create a progress bar using Plotly
@@ -26,16 +26,7 @@ def custom_progress_bar(value):
         </div>
     </div>
     """, height=20)
-# Now you can import the file from the parent directory
-import prepare_data as pd
 
-# page will show summary dashboard with the following
-# navigation for activity level, primary outcome 
-# 4 separate columns for: activity (to-date and YTD) and budget (to-date and YTD)
-
-
-
-# navigation menus 
 df = pd.prepare_data(level="Activity")
 
 # Create filters 
