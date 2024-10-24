@@ -1,6 +1,6 @@
 import streamlit as st 
 import plotly.graph_objects as go, plotly.express as px
-# from .. import prepare_data as pd 
+# from prepare_data import prepare_data as pd 
 import sys
 import os
 # Get the parent directory path
