@@ -1,2 +1,2 @@
-pip install pandas 
-pip install plotly_express
+pandas 
+plotly_express
