@@ -1,12 +1,13 @@
 import pandas as pd
-
+https://drive.google.com/uc?export=download&id=FILE_ID
+file_url = f"https://docs.google.com/uc?export=download&id=1pjaVbBfL4K6rNL9sJqwtH9D_SHTpK_6_"
 
 def prepare_data(level=None):
-    woreda = pd.read_excel("data.xlsx", sheet_name="Woreda Activities")
+    woreda = pd.read_excel(file_url, sheet_name="Woreda Activities")
     woreda["Level"] = "Woreda level"
-    region = pd.read_excel("data.xlsx", sheet_name="Region Activities")
+    region = pd.read_excel(file_url, sheet_name="Region Activities")
     region["Level"] = "Regional level"
-    national = pd.read_excel("data.xlsx", sheet_name="National Activities")
+    national = pd.read_excel(file_url, sheet_name="National Activities")
     national["Level"] = "National level"
 
     df = pd.DataFrame()
