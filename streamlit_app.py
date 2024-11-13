@@ -1,14 +1,39 @@
 import streamlit as st 
 import plotly.graph_objects as go, plotly.express as px
-from prepare_data import prepare_data 
+# from prepare_data import prepare_data 
 import sys
 import os
-# Get the parent directory path
-# parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-# # Add the parent directory to sys.path
-# sys.path.append(parent_dir)
 
+file_url = f"https://docs.google.com/uc?export=download&id=1pjaVbBfL4K6rNL9sJqwtH9D_SHTpK_6_"
 ## helper functions 
+
+def prepare_data(level=None):
+    woreda = pd.read_excel(file_url, sheet_name="Woreda Activities")
+    woreda["Level"] = "Woreda level"
+    region = pd.read_excel(file_url, sheet_name="Region Activities")
+    region["Level"] = "Regional level"
+    national = pd.read_excel(file_url, sheet_name="National Activities")
+    national["Level"] = "National level"
+
+    df = pd.DataFrame()
+    for d in [woreda, region, national]:
+        d.columns = d.columns.str.lower()
+        df = pd.concat([d, df], axis=0)
+
+    pmap = {
+        'Availability of essential inputs ensured': "PO3-Inputs & HMIS",
+        'Improved primary health care governance': "PO1-Governance",
+        'Improved efficiencies and resource mobilization for health': "PO2-Financing",
+        'Cross cutting': "Cross cutting"
+    }
+    df["po key"] = df["primary outcome"].map(pmap)
+    print(df["level"].unique())
+    if level == None:
+        return df
+    elif level == "Activity":
+        filtered_rows = (df["level"] == "Woreda level") | (df["level"] =="Regional level")
+        return df.loc[filtered_rows,:]
+
 # Create a progress bar using Plotly
 def custom_progress_bar(value):
     if value >= 85:
