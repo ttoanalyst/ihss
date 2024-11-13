@@ -1,4 +1,4 @@
-import streamlit as st 
+import streamlit as st , pandas as pd
 import plotly.graph_objects as go, plotly.express as px
 # from prepare_data import prepare_data 
 import sys
