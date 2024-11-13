@@ -52,7 +52,7 @@ def custom_progress_bar(value):
     </div>
     """, height=20)
 
-df = pd.prepare_data(level="Activity")
+df = prepare_data(level="Activity")
 
 # Create filters 
 st.write("Filter controls")
