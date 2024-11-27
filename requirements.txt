@@ -1,2 +1,4 @@
+openpyxl
+numpy
 pandas 
 plotly_express
